@@ -1,0 +1,188 @@
+/* Main container */
+.gaming-signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000000; /* Pure black background */
+}
+
+/* Card styling */
+.gaming-signup-card {
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  background: #121212; /* Very dark gray for subtle contrast */
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.2); /* Green box shadow */
+  text-align: center;
+}
+
+/* Input group */
+.gaming-input-group {
+  margin-bottom: 15px;
+}
+
+.gaming-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #1c1c1c; /* Slightly lighter black for input field */
+  color: #00ff00; /* Green input text */
+  font-size: 1rem;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.3); /* Green inner shadow */
+  transition: all 0.3s ease;
+}
+
+.gaming-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #00ff00, inset 0 0 5px rgba(0, 255, 0, 0.5); /* Green focus effect */
+}
+
+/* Button */
+.gaming-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00ff00, #33ff33); /* Green gradient */
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green button shadow */
+}
+
+.gaming-btn:hover {
+  background: linear-gradient(90deg, #33ff33, #00ff00);
+  transform: scale(1.05);
+}
+
+/* Error message */
+.gaming-error {
+  margin-bottom: 20px;
+  color: #ff3860; /* Bright red for errors */
+  font-size: 0.9rem;
+}
+
+/* Link */
+.gaming-link {
+  color: #00ff00; /* Bright green link text */
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gaming-link:hover {
+  color: #33ff33;
+}
+
+/* Map container */
+#map-container {
+  height: 100vh; /* Full screen height */
+  width: 100%; /* Full screen width */
+  border: 2px solid #00ff00; /* Bright green border */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.5); /* Neon green glow effect */
+  background-color: #000; /* Fallback black background while loading tiles */
+  overflow: hidden; /* Prevent map overflow on small screens */
+}
+
+.dispalyNone {
+  display: none;
+}
+
+.otp-popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.otp-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.otp-input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.otp-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.otp-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.otp-popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.otp-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.otp-input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.otp-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}

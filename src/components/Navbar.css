@@ -1,0 +1,84 @@
+/* General Navbar Styling */
+.gaming-navbar {
+    font-family: 'Minecraft', sans-serif; /* Minecraft font globally */
+    background: linear-gradient(90deg, #1b5e20, #2e7d32); /* Green gradient for navbar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    padding: 10px;
+    color: #00ff00; /* Neon green text */
+  }
+  
+  /* Navbar Brand */
+  .gaming-navbar .navbar-brand {
+    font-size: 1.8rem; /* Slightly larger text for the brand */
+    color: #00ff00; /* Neon green */
+    text-shadow: 2px 2px 0px #66ff66, 4px 4px 0px rgba(0, 0, 0, 0.7); /* Green glow effect */
+    transition: transform 0.2s, color 0.3s;
+  }
+  
+  .gaming-navbar .navbar-brand:hover {
+    color: #ffffff; /* White on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+  
+  /* Navbar Links */
+  .gaming-navbar .nav-link {
+    font-size: 1.2rem;
+    color: #00ff00; /* Neon green links */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .gaming-navbar .nav-link:hover {
+    color: #ccff33; /* Lighter green on hover */
+    text-decoration: underline;
+  }
+  
+  /* Disabled Links */
+  .gaming-navbar .nav-link.disabled {
+    color: #666666; /* Gray for disabled links */
+    cursor: not-allowed;
+  }
+  
+  /* Dropdown */
+  .gaming-navbar .dropdown-menu {
+    background-color: #1b5e20; /* Dark green background */
+    border: 1px solid #2e7d32; /* Slightly darker green border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Shadow effect */
+  }
+  
+  .gaming-navbar .dropdown-item {
+    color: #00ff00; /* Neon green dropdown items */
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .gaming-navbar .dropdown-item:hover {
+    background-color: #2e7d32; /* Darker green background on hover */
+    color: #ccff33; /* Lighter green on hover */
+  }
+  
+  /* Dropdown Divider */
+  .gaming-navbar .dropdown-divider {
+    border-color: #2e7d32;
+  }
+  
+  /* Toggler Button */
+  .gaming-navbar .navbar-toggler {
+    border: 1px solid #00ff00; /* Green border */
+  }
+  
+  .gaming-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='%2300ff00' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.5 12.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1zm0-5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1zm0-5h13a.5.5 0 0 1 0-1h-13a.5.5 0 0 1 0-1z'/%3E%3C/svg%3E");
+  }
+  
+  /* Responsive Navbar */
+  @media (max-width: 768px) {
+    .gaming-navbar .navbar-brand {
+      font-size: 1.5rem;
+    }
+  
+    .gaming-navbar .nav-link {
+      font-size: 1rem;
+    }
+  }
+  

@@ -1,0 +1,182 @@
+/* Overall Container */
+.user-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(7, 13, 16); /* Card background */
+  padding: 20px;
+}
+
+/* Card Styling */
+.user-details-form {
+  width: 100%;
+  max-width: 500px;
+  background-color: rgb(26, 26, 26); /* Box background */
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 
+    0 0 15px rgba(0, 150, 255, 0.5),
+    0 0 30px rgba(0, 150, 255, 0.2);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Title Styling */
+.user-details-title {
+  color: #00ccff; /* Light blue color */
+  font-size: 24px; /* Title size */
+  margin-bottom: 20px; /* Space below the title */
+  text-align: center; /* Centers the title */
+  font-family: 'Orbitron', sans-serif; /* Optional custom font */
+}
+/* Group Styling */
+.user-details-group {
+  margin-bottom: 20px;
+}
+
+.user-details-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #00ccff;
+}
+
+/* Input Field Styling */
+.user-details-group input,
+.user-details-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgb(38, 38, 38); /* Darker input box */
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.user-details-group input:focus,
+.user-details-group select:focus {
+  outline: none;
+  border: 2px solid #00ccff;
+  box-shadow: 0 0 5px #00ccff;
+}
+
+/* Error Message Styling */
+.field-error {
+  color: #ff3860; /* Red color for errors */
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* Error and Success Notification */
+.user-details-error {
+  color: #ff3860;
+  background: #291717;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-details-success {
+  color: #2ecc71; /* Green success message */
+  background: #162716;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Save Button */
+.user-details-save-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #0066cc, #00ccff);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.user-details-save-btn:hover {
+  background: linear-gradient(90deg, #00ccff, #0066cc);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.7);
+  transform: scale(1.05);
+}
+
+
+.scorllforContainer{
+  overflow-x: hidden;
+  background: rgb(7, 13, 16);
+  overflow: scroll;
+  height: 900px;
+}
+/* Popup container */
+.success-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out; /* Fade-in animation */
+}
+
+/* Popup content box */
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading of the popup */
+.popup-content h3 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Popup message */
+.popup-content p {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+/* Close button inside the popup */
+.popup-content button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #2980b9;
+}
+
+/* Popup fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

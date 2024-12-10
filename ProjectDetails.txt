@@ -1,0 +1,215 @@
+Map Page Details    
+
+1. Dependencies and Imports
+
+import React, { useState, useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup, Polygon, useMapEvents } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import "./Map.css"; // Import the external CSS file
+1)React: For building the component and managing state.
+2)react-leaflet: Provides React components to work with Leaflet for map rendering.
+3)Leaflet (L): A JavaScript library for creating interactive maps.
+4)CSS (leaflet.css and Map.css): Styling for the map and its elements.
+
+
+
+
+2. Custom Marker Icon
+
+const customIcon = new L.Icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/833/833314.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40],
+});
+
+1)Creates a custom marker icon using an external image URL.
+2)Adjusts the size, anchor, and popup position relative to the marker.
+
+
+
+3. Component State and Initialization
+
+const [userLocation, setUserLocation] = useState(null);
+const [selectedPosition, setSelectedPosition] = useState(null);
+1)userLocation: Stores the current location of the user (either from localStorage or a default location).
+2)selectedPosition: Stores information about a marker the user selects.
+
+useEffect(() => {
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  if (userData && userData.location) {
+    setUserLocation({
+      lat: userData.location.latitude,
+      lng: userData.location.longitude,
+    });
+  } else {
+    setUserLocation({ lat: 23.0115008, lng: 72.5112673 });
+  }
+}, []);
+
+1)Fetches the user's location from localStorage. If unavailable, sets a default location.
+
+
+
+4. Functions for Calculations
+
+4.1 calculateGrid
+
+const calculateGrid = (center, cellSize) => {
+  // Calculates a 3x3 grid of squares around the user's location.
+  const latOffset = cellSize / 111000;
+  const lngOffset = cellSize / (111000 * Math.cos((center.lat * Math.PI) / 180));
+  const grid = [];
+
+  for (let row = -1; row <= 1; row++) {
+    for (let col = -1; col <= 1; col++) {
+      const topLeft = [center.lat + row * latOffset, center.lng + col * lngOffset];
+      const topRight = [center.lat + row * latOffset, center.lng + (col + 1) * lngOffset];
+      const bottomRight = [center.lat + (row - 1) * latOffset, center.lng + (col + 1) * lngOffset];
+      const bottomLeft = [center.lat + (row - 1) * latOffset, center.lng + col * lngOffset];
+      grid.push([topLeft, topRight, bottomRight, bottomLeft]);
+    }
+  }
+
+  return grid;
+};
+Computes coordinates for a 3x3 grid of squares around a central point (e.g., the user's location).
+4.2 calculateSquare
+jsx
+Copy code
+const calculateSquare = (center, size) => {
+  const latOffset = size / 111000;
+  const lngOffset = size / (111000 * Math.cos((center.lat * Math.PI) / 180));
+  return [
+    [center.lat + latOffset, center.lng - lngOffset],
+    [center.lat + latOffset, center.lng + lngOffset],
+    [center.lat - latOffset, center.lng + lngOffset],
+    [center.lat - latOffset, center.lng - lngOffset],
+  ];
+};
+=>Calculates coordinates for a single square around a central point based on the given size.
+
+
+4.3 createSquareMask
+
+const createSquareMask = (center, size) => {
+  const latOffset = size / 111000;
+  const lngOffset = size / (111000 * Math.cos((center.lat * Math.PI) / 180));
+  const squareCoords = [
+    [center.lat + latOffset, center.lng - lngOffset],
+    [center.lat + latOffset, center.lng + lngOffset],
+    [center.lat - latOffset, center.lng + lngOffset],
+    [center.lat - latOffset, center.lng - lngOffset],
+  ];
+
+  const outerBounds = [
+    [-90, -180],
+    [-90, 180],
+    [90, 180],
+    [90, -180],
+    [-90, -180],
+  ];
+
+  return [outerBounds, squareCoords];
+};
+=>Creates a mask for a square. The mask includes an outer rectangle encompassing the entire map and a square cutout.
+
+
+5. Map Interaction
+
+5.1 Map Events
+
+const MapClickHandler = () => {
+  useMapEvents({
+    click(e) {
+      const { lat, lng } = e.latlng;
+      console.log(`Clicked Location - Latitude: ${lat}, Longitude: ${lng}`);
+    },
+  });
+  return null;
+};
+=>Handles click events on the map and logs the clicked location's coordinates.
+
+5.2 Marker Click
+
+const handleMarkerClick = (coordinate) => {
+  setSelectedPosition(coordinate);
+  console.log(`Selected Marker: ${coordinate.name}`);
+};
+
+=>Handles marker clicks and updates selectedPosition.
+
+
+
+6. Map Rendering
+
+<MapContainer center={[userLocation.lat, userLocation.lng]} zoom={15} style={{ height: "100%", width: "100%" }}>
+  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
+  
+  <Marker position={[userLocation.lat, userLocation.lng]} icon={customIcon}>
+    <Popup>
+      <strong>Your Location</strong>
+      <br />
+      Latitude: {userLocation.lat}
+      <br />
+      Longitude: {userLocation.lng}
+    </Popup>
+  </Marker>
+
+  {/* Render Grid */}
+  {calculateGrid(userLocation, 500).map((square, index) => (
+    <Polygon key={index} positions={square} pathOptions={{ color: index === 4 ? "green" : "blue", fillOpacity: 0.2 }} />
+  ))}
+
+  {/* Render predefined marker */}
+  {predefinedCoordinates.map((coordinate) => (
+    <Marker key={coordinate.id} position={[coordinate.lat, coordinate.lng]} icon={customIcon} eventHandlers={{ click: () => handleMarkerClick(coordinate) }}>
+      <Popup>
+        <strong>{coordinate.name}</strong>
+        <br />
+        Latitude: {coordinate.lat}
+        <br />
+        Longitude: {coordinate.lng}
+      </Popup>
+    </Marker>
+  ))}
+
+  <MapClickHandler />
+</MapContainer>
+
+
+1)MapContainer: The main map container.
+2)TileLayer: Defines the map tiles using OpenStreetMap.
+3)Markers: Display points (e.g., user and predefined coordinates) with clickable popups.
+4)Polygons: Draws the 3x3 grid and other geometries.
+
+
+
+7. Styling
+
+/* Map.css */
+.map-container {
+  height: 100vh;
+  position: relative;
+}
+
+.admin-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.selected-position {
+  margin-top: 10px;
+  font-size: 14px;
+}
+=>Styles the map and additional UI elements, like the admin info section.
+
+
+    

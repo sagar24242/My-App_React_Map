@@ -1,0 +1,158 @@
+/* Main container with gaming vibes */
+.gaming-login-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0f2027, #1b5e20, #2c5364); /* Dark gradient with green tones */
+  overflow: hidden;
+  font-family: 'Minecraft', sans-serif; /* Apply Minecraft font */
+}
+
+/* Left map section */
+.gaming-map-section {
+  flex: 2;
+  background: url('https://files.oaiusercontent.com/file-Matqn3frsgeEieVFLtCrDd?se=2024-11-23T20%3A58%3A23Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D82ee1c17-d857-4ac0-a750-73b4c1c4e4bc.webp&sig=jfwzpY9/LaqqckPnTeRoWHKnj%2BKTYIEMDl6zPST6nE0%3D') no-repeat center center; /* Replace with gaming map image */
+  background-size: cover;
+  filter: brightness(0.7);
+  border-right: 2px solid rgba(0, 255, 0, 0.2); /* Green border */
+  position: relative;
+}
+
+.gaming-map-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* Overlay effect */
+  z-index: 1;
+}
+
+/* Right form section */
+.gaming-form-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8); /* Darker overlay for focus */
+  backdrop-filter: blur(5px); /* Blurred effect */
+}
+
+/* Login card styling */
+.gaming-login-card {
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  background: #1a1a1a; /* Dark card background */
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.2); /* Green glow */
+  text-align: center;
+  font-family: 'Minecraft', sans-serif; /* Apply Minecraft font */
+}
+
+/* Title */
+.gaming-title {
+  color: #00ff00; /* Bright green */
+  font-size: 2rem; /* Adjust font size */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Makes text uppercase */
+  font-family: 'Minecraft', sans-serif; /* Apply Minecraft font */
+  text-shadow: 2px 2px 0px #33ff33, 4px 4px 0px rgba(0, 0, 0, 0.5); /* Adds a cool shadow effect */
+  letter-spacing: 2px; /* Optional: Spacing between letters for a bold look */
+}
+
+/* Input fields */
+.gaming-input-group {
+  margin-bottom: 15px;
+}
+
+.gaming-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #292929;
+  color: #00ff00; /* Neon input text */
+  font-size: 1rem;
+  font-family: 'Minecraft', sans-serif; /* Apply Minecraft font to inputs */
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.3); /* Green glow */
+  transition: all 0.3s ease;
+}
+
+.gaming-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #00ff00, inset 0 0 5px rgba(0, 255, 0, 0.5); /* Green focus effect */
+}
+
+/* Login button */
+.gaming-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00ff00, #33cc33); /* Green gradient */
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green button shadow */
+  font-family: 'Minecraft', sans-serif; /* Minecraft font on button */
+}
+
+.gaming-btn:hover {
+  background: linear-gradient(90deg, #33cc33, #00ff00); /* Reverse gradient */
+  transform: scale(1.05);
+}
+
+/* Error message */
+.gaming-error {
+  margin-bottom: 20px;
+  color: #ff3860; /* Bright red for error messages */
+  font-size: 0.9rem;
+  font-family: 'Minecraft', sans-serif; /* Apply Minecraft font to error */
+}
+
+/* Signup link */
+.gaming-signup-link {
+  margin-top: 15px;
+}
+
+.gaming-link {
+  color: #00ff00; /* Neon green for the link */
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Minecraft', sans-serif; /* Apply Minecraft font to links */
+  transition: color 0.3s ease;
+}
+
+.gaming-link:hover {
+  color: #33cc33; /* Slightly lighter green on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gaming-login-container {
+    flex-direction: column;
+  }
+
+  .gaming-map-section {
+    flex: 1;
+    height: 200px;
+  }
+
+  .gaming-form-section {
+    flex: 1;
+  }
+}
+
+/* Signup link container */
+.gaming-signup-link {
+  margin-top: 15px;
+}
+
+/* Ensure text is white for better visibility */
+.gaming-signup-link p {
+  color: #ffffff; /* Set text color to white */
+}
